@@ -13,12 +13,15 @@
 <body>
     <div class="container col-8 mt-5">
         <h1 class="text-center">INFORME OS DADOS</h1>
-        @isset($menssagemErro)
+        @if($errors->any())
+            @foreach ($errors->all() as $error)
             <div class="alert alert-danger">
-                {{ $menssagemErro}}
+                {{ $error }}
             </div>
-        @endisset
-        <form action="/display" method="POST">
+            @endforeach
+                
+        @endif
+        <form action="capture/parameter" method="POST">
         @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
