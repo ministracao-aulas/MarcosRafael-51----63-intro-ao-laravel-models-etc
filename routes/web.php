@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (Request $request) {
-    if (isset($request->error));
+    if (!isset($request->error)) {
+        return ;
+    }
+    
     return view('capture')->with('error', $request->error);
 })->name('create.parameter');
 

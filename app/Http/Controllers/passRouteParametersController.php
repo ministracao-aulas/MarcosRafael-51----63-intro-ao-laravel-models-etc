@@ -18,6 +18,7 @@ class passRouteParametersController extends Controller
         }
         return redirect()->route('display.parameter', [...$request->all()]);
     }
+    
     public function display(Request $request)
     {
         return view('display')->with(['data' => $request]);
