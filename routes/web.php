@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\passRouteParametersController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (Request $request) {
     if (!isset($request->error)) {
-        return ;
+        return;
     }
-    
+
     return view('capture')->with('error', $request->error);
 })->name('create.parameter');
 
-Route::controller(passRouteParametersController::class)->group(function() {
+Route::controller(passRouteParametersController::class)->group(function () {
     Route::post('/capture/parameter', 'capture')->name('capture.parameter');
     Route::get('/display/parameter', 'display')->name('display.parameter');
+});
+
+Route::prefix('customers')->name('customers.')->group(function () {
+    Route::get('/create', [CustomerController::class, 'create'])->name('create');
+    Route::post('/store', [CustomerController::class, 'store'])->name('store');
 });
