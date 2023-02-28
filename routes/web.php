@@ -3,6 +3,7 @@
 use App\Http\Controllers\passRouteParametersController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FakeLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,10 @@ Route::controller(passRouteParametersController::class)->group(function () {
 Route::prefix('customers')->name('customers.')->group(function () {
     Route::get('/create', [CustomerController::class, 'create'])->name('create');
     Route::post('/store', [CustomerController::class, 'store'])->name('store');
+});
+
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [FakeLoginController::class, 'form'])->name('login');
+    Route::post('/login', [FakeLoginController::class, 'handleForm']);
+    Route::get('/profile', [FakeLoginController::class, 'profileHome'])->name('profile');
 });
