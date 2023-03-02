@@ -16,15 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (Request $request) {
-    if (!isset($request->error)) {
-        return;
-    }
+// Route::get('/', function (Request $request) {
+//     if (!isset($request->error)) {
+//         return;
+//     }
 
-    return view('capture')->with('error', $request->error);
-})->name('create.parameter');
+//     return view('capture')->with('error', $request->error);
+// })->name('create.parameter');
 
 Route::controller(passRouteParametersController::class)->group(function () {
+    Route::get('/', 'index');
     Route::post('/capture/parameter', 'capture')->name('capture.parameter');
     Route::get('/display/parameter', 'display')->name('display.parameter');
 });
