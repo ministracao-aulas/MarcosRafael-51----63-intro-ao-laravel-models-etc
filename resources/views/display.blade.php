@@ -12,7 +12,7 @@
 
 <body>
     <div class="container col-8 mt-5">
-        <h1 class="text-center">DADOS INFORMADOS</h1>
+        <h1 class="text-center">DADOS CADASTRADOS</h1>
         <table class="table datatable table-striped ft-cinza">
             <thead>
                 <tr>
