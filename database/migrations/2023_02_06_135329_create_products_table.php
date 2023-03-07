@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo_produto');
+            $table->string('name');
             $table->integer('quantidade')->nullable();
             $table->float('valor', 8, 2, true)->nullable();
             $table->timestamps();

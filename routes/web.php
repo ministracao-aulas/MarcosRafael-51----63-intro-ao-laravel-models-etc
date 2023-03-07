@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\passRouteParametersController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CustomerController;
+use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +23,7 @@ use Illuminate\Support\Facades\Route;
 //         return;
 //     }
 
-//     return view('capture')->with('error', $request->error);
-// })->name('create.parameter');
+
 
 Route::controller(passRouteParametersController::class)->group(function () {
     Route::get('/', 'index');
@@ -34,3 +35,10 @@ Route::prefix('customers')->name('customers.')->group(function () {
     Route::get('/create', [CustomerController::class, 'create'])->name('create');
     Route::post('/store', [CustomerController::class, 'store'])->name('store');
 });
+
+
+
+Route::get('/product', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+
+
