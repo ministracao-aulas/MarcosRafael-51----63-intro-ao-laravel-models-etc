@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\passRouteParametersController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,7 @@ Route::prefix('customers')->name('customers.')->group(function () {
 Route::get('/product', [ProductController::class, 'create'])->name('product.create');
 Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 
-
+Route::controller(UploadController::class)->group(function () {
+    Route::get('/upload', 'index')->name('upload');
+    Route::post('/upload/store', 'store')->name('save.file');
+});
