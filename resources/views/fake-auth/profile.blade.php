@@ -18,14 +18,9 @@
         <div class="row d-flex justify-content-center mt-5">
             <div class="col-5 mt-5">
                 <h1>Profile</h1>
+                <p><strong><a href="{{ route('login') }}">Login</a></strong></p>
                 <ul>
-                    @auth ()
-                        <li>Name: {{ Auth::user()->name }} | <a href="{{ route('logout') }}">Logoff</a></strong></li>
-                    @else
-                        <li><strong><a href="{{ route('login') }}">Login</a></strong></li>
-                    @endif
-                    <li>Informação protegida: {{ date('H-i-s') }}</li>
-                    <li>hora agora: {{ date('H-i-s') }}</li>
+                    <li>hora antes: {{ session()->get('hora_antes') }}</li>
                     <li>hora agora: {{ date('H-i-s') }}</li>
                 </ul>
             </div>

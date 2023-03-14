@@ -17,7 +17,7 @@ class FakeLoginController extends Controller
      */
     public function form(Request $request): View
     {
-        return view('auth.login');
+        return view('fake-auth.login');
     }
 
     /**
@@ -69,6 +69,6 @@ class FakeLoginController extends Controller
      */
     public function profileHome(Request $request): View
     {
-        return view('auth.profile');
+        return view('fake-auth.profile');
     }
 }
